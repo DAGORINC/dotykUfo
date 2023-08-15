@@ -1,20 +1,20 @@
 import {
   IonAccordion,
   IonAccordionGroup,
-  IonButton,
+  IonContent,
+  IonImg,
   IonItem,
   IonLabel,
   IonMenu,
+  IonToolbar,
 } from '@ionic/react';
 
-import { BsFileEarmarkPdf } from 'react-icons/bs'
-
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Menu.css';
+import styles from './Menu.module.css';
 import { useEffect, useState } from 'react';
 import IFactory from '../../interfaces/IFactory';
 import FakeApiController from '../../fakeApi/FakeApi';
-import IPdfFile from '../../interfaces/IPdfFile';
 import FilesItem from './FilesItem/FilesItem';
 
 
@@ -39,23 +39,33 @@ const Menu: React.FC = () => {
 
   return (
     <IonMenu contentId="main" type="overlay">
+      <IonToolbar>
+        <Link to={'/'}>
+          <IonImg src='/logo.PNG' />
+        </Link>
+      </IonToolbar>
+      <IonContent className={styles.content}>
 
-      <IonAccordionGroup>
-        {
-          factories.map((factory, index) => {
-            return (
-              <IonAccordion key={index}>
-                <IonItem key={index} slot="header" color="light" >
-                  <IonLabel>{factory.name}</IonLabel>
-                </IonItem>
-                <FilesItem 
-                  factory={factory.name}
-                />
-              </IonAccordion>)
-          })
-        }
-      </IonAccordionGroup>
+        <IonAccordionGroup >
+          {
+            factories.map((factory, index) => {
+              return (
+                <IonAccordion
+                  key={index}
+                  className={styles.accordion}
+                >
+                  <IonItem key={index} slot="header" color="light" >
+                    <IonLabel>{factory.name}</IonLabel>
+                  </IonItem>
+                  <FilesItem
+                    factory={factory.name}
+                  />
+                </IonAccordion>)
+            })
+          }
+        </IonAccordionGroup>
 
+      </IonContent>
     </IonMenu>
   );
 };

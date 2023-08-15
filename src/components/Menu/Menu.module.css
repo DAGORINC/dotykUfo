@@ -1,0 +1,9 @@
+.accordion {
+    background-color: #1e1e1e;
+    margin-bottom: 10px;
+}
+
+.content {
+    overflow-y: hidden;
+    background-color: white;
+}

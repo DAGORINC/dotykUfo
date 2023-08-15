@@ -34,7 +34,7 @@ const App: React.FC = () => {
           <IonRouterOutlet id="main">
             
             <Route 
-              path='/filePage'
+              path='/filePage/:factoryName/:fileName'
               exact
               component={PdfPage}
             />

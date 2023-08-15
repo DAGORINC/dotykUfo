@@ -8,6 +8,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 interface IParams {
     fileName: string,
+    factoryName: string,
 }
 
 const PdfPage: React.FC = () => {
@@ -20,7 +21,6 @@ const PdfPage: React.FC = () => {
     setNumPages(numPages);
   }
 
-  console.log(params.fileName);
   
 
   return (
@@ -28,11 +28,12 @@ const PdfPage: React.FC = () => {
       <IonContent>
         <center>
           <div style={{ height: '100vh', overflowY: 'scroll' }}>
-            <Document file={`../../fakeApi/pdfFiles?${params.fileName}`} onLoadSuccess={onDocumentLoadSuccess}>
+            <Document file={`/PdfFiles/${params.factoryName}/${params.fileName}.pdf`} onLoadSuccess={onDocumentLoadSuccess}>
               {Array.from(
                 new Array(numPages),
                 (el, index) => (
                   <Page
+                    width={700}
                     renderTextLayer={false}
                     renderAnnotationLayer={false}
                     key={`page_${index + 1}`}
