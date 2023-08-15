@@ -1,0 +1,22 @@
+/* HomePage.module.css */
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .logoContainer {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .logo {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  

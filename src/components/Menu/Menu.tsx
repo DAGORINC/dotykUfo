@@ -54,7 +54,7 @@ const Menu: React.FC = () => {
                   key={index}
                   className={styles.accordion}
                 >
-                  <IonItem key={index} slot="header" color="light" >
+                  <IonItem key={index} slot="header" color="dark" >
                     <IonLabel>{factory.name}</IonLabel>
                   </IonItem>
                   <FilesItem

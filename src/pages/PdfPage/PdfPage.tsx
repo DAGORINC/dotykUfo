@@ -1,14 +1,14 @@
-import { IonContent, IonPage } from '@ionic/react';
+import { IonContent, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { useState } from 'react';
-import styles from './Page.module.css'
+import styles from './PdfPage.module.css'
 import { useParams } from 'react-router';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 interface IParams {
-    fileName: string,
-    factoryName: string,
+  fileName: string,
+  factoryName: string,
 }
 
 const PdfPage: React.FC = () => {
@@ -21,13 +21,16 @@ const PdfPage: React.FC = () => {
     setNumPages(numPages);
   }
 
-  
+
 
   return (
     <IonPage>
+      <IonToolbar color='dark'>
+        <IonTitle>{`${params.factoryName}  ${params.fileName}`}</IonTitle>
+      </IonToolbar>
       <IonContent>
         <center>
-          <div style={{ height: '100vh', overflowY: 'scroll' }}>
+          <div className={styles.documentContainer} style={{ height: '100vh', overflowY: 'scroll' }}>
             <Document file={`/PdfFiles/${params.factoryName}/${params.fileName}.pdf`} onLoadSuccess={onDocumentLoadSuccess}>
               {Array.from(
                 new Array(numPages),

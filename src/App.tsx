@@ -22,6 +22,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import PdfPage from './pages/PdfPage/PdfPage';
+import HomePage from './pages/HomePage/HomePage';
 
 setupIonicReact();
 
@@ -32,6 +33,12 @@ const App: React.FC = () => {
         <IonSplitPane contentId="main">
           <Menu />
           <IonRouterOutlet id="main">
+            
+            <Route 
+              path='/'
+              exact
+              component={HomePage}
+            />
             
             <Route 
               path='/filePage/:factoryName/:fileName'
